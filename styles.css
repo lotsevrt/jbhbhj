@@ -1,42 +1,134 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
+/* Базові змінні для кольорів (світла тема за замовчуванням) */
+:root {
+    --bg-body: #f0f2f5;        /* Світло-сірий фон сторінки */
+    --bg-container: #ffffff;   /* Білий фон резюме */
+    --text-main: #333333;      /* Основний колір тексту */
+    --text-muted: #555555;     /* Колір для додаткового тексту */
+    --heading-color: #1f3b5c;  /* Темно-синій колір заголовків як на фото */
+    --link-color: #0066cc;     /* Синій колір для посилань/контактів */
+    --border-color: #eaeaea;   /* Світло-сірий для ліній */
+}
+
+/* Темна тема (активується, якщо до body додається клас dark-mode через JS) */
+body.dark-mode {
+    --bg-body: #121212;
+    --bg-container: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #aaaaaa;
+    --heading-color: #64b5f6;
+    --link-color: #90caf9;
+    --border-color: #333333;
+}
+
+/* Скидання базових відступів */
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    padding: 0;
 }
 
-main {
-    background-color: #fff;
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 40px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Головний контейнер резюме */
+.container {
     max-width: 800px;
-    padding: 30px;
+    margin: 0 auto;
+    background-color: var(--bg-container);
+    padding: 50px 60px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Легка тінь як на скріншоті */
+    position: relative;
+    transition: background-color 0.3s ease;
 }
 
-h1, h2, h3 {
-    color: #2c3e50;
+/* Шапка резюме */
+header {
+    margin-bottom: 40px;
 }
 
+h1 {
+    color: var(--heading-color);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: var(--heading-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Кнопка зміни теми */
+#theme-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    padding: 8px 16px;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#theme-btn:hover {
+    filter: brightness(0.95);
+}
+
+/* Заголовки секцій */
+h3 {
+    color: var(--heading-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+/* Секції */
 section {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 35px;
 }
 
+.about p {
+    text-align: justify;
+}
+
+/* Списки (Освіта та Навички) */
 ul {
-    list-style-type: square;
+    list-style-type: disc;
     padding-left: 20px;
 }
 
-a {
-    color: #3498db;
-    text-decoration: none;
+li {
+    margin-bottom: 15px;
+    color: var(--text-muted);
 }
 
-a:hover {
-    text-decoration: underline;
+li strong {
+    color: var(--text-main);
+    display: inline-block;
+    margin-bottom: 4px;
 }
+
+/* Сітка для секцій */
+.grid {
